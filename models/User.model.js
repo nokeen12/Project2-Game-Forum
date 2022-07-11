@@ -5,16 +5,31 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
+      trim: true, //gets rid of space 
+      required: [true, 'Username is required.'],
       unique: true
     },
-    password: String,
+    email: {
+      type: String,
+      trim: true,
+      required: [true, 'Email is required.'],
+      unique: true,
+      lowercase: true
+    },
+    passwordHash: {
+      type: String,
+      required: [true, 'Password is required.']
+    },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
+    //object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true
   }
 );
 
-const User = model("User", userSchema);
-
-module.exports = User;
+module.exports = model("User", userSchema);

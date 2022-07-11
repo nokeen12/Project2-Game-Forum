@@ -1,0 +1,21 @@
+<h1>Guides Page</h1>
+
+<div>
+    <a href="/create">Create a Guide</a>
+</div>
+{{!-- <div id="searchBar">
+
+</div> --}}
+<div id="guidesHolder">
+    {{!-- <div class=""> --}}
+        {{#each guide}}
+            <div class="guide"><a href="/guides/{{id}}">
+                <h1 id="title">{{title}} </h1>
+                <p id="creator">Created by: {{ creator }}!</p>
+                <p id="body">{{body}}</p>
+                </a>
+            </div>
+            {{else}}
+                <p>Guide couldn't load</p>
+        {{/each}}
+</div>

@@ -4,12 +4,11 @@ min-height: 100%;
 position:relative;
 }
 body {
+  margin: 0;
   width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* background: rgb(7,40,60); */
   background: linear-gradient(0deg, rgba(7,40,60,1) 0%, rgba(58,21,74,1) 100%);
   background-repeat: no-repeat;
-  /* height: 2000px; */
 }
 #banner{
   background-image: url("../images/galaxy.png");
@@ -65,4 +64,12 @@ a:active {
 
 h1 {
   color: 15px;
+}
+
+#guidesHolder{
+  margin: 20px 100px;
+}
+.guide{
+  background-color:red;
+  width: 100%;
 }

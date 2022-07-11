@@ -1,1 +1,23 @@
 <p>Sign up Page</p>
+
+<div id="form">
+  <h2>Signup</h2>
+  <form action="/signup" method="POST">
+
+    <label> Username
+      <input type="text" name="username" placeholder="Username" />
+    </label>
+
+    <label> Email
+      <input type="email" name="email" placeholder="example@example.com" />
+    </label>
+
+    <label> Password
+      <input type="password" name="password" placeholder="********" />
+    </label>
+
+    <button type="submit">Create account</button>
+
+  </form>
+  <p>Already have an account? Go <a href="/login">Log in</a></p>
+</div>

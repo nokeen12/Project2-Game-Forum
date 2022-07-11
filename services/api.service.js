@@ -3,13 +3,17 @@ const axios = require('axios');
 class ApiService {
   constructor() {
     this.api = axios.create({
-      baseURL: 'localhost:3000'
+      baseURL: 'http://localhost:27017'
     });
   }
 
-  signUp = () => {
-    return this.api.get('/signup');
-  };
+
+  getGuide = (guideId) => {
+    return this.api.get(`/guides/${guideId}`)
+  }
+//   signUp = () => {
+//     return this.api.get('/signup');
+//   };
 
 //   getAllCharacters = () => {
 //     return this.api.get('/characters');
