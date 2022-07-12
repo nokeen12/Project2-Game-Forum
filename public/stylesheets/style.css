@@ -1,7 +1,7 @@
 html{
-margin: 0;
-min-height: 100%;
-position:relative;
+  margin: 0;
+  min-height: 100%;
+  position:relative;
 }
 body {
   margin: 0;
@@ -10,25 +10,29 @@ body {
   background: linear-gradient(0deg, rgba(7,40,60,1) 0%, rgba(58,21,74,1) 100%);
   background-repeat: no-repeat;
 }
-#banner{
-  background-image: url("../images/galaxy.png");
-  background-size: cover;
+/* background image */
+#backgroundImage{
+  background-image: url("../images/galaxy2.jpg");
+  opacity: 1;
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
   position:absolute;
   top:0;
   width: 100%;
-  min-height: 400px;
+  height: 100%;
 }
-
+/* nav bar */
 #wholeNav{
+  z-index: 1;
   display: flex;
   position: sticky;
-  margin-top: 400px;
+  margin: 400px auto 0px auto;
   top:0;
-  background-color: darkgreen;
-  height: 200px;
-  width: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  width: 80%;
+  justify-content: center;
 }
-
 #navOptions{
   padding:0;
   width:100%;
@@ -36,11 +40,11 @@ body {
   flex-direction:row;
   align-items:center;
   justify-content: space-around;
+  justify-items: center;
 }
-
 #wholeNav ul li a {
   font-size: 20px;
-  color: red;
+  color: darkmagenta;
 }
 a:link {
   text-decoration: none;
@@ -53,7 +57,6 @@ a:active {
   text-decoration: none;
   color: purple;
 }
-
 #profileIcon{
   background-image: url("../images/profile-icon.png");
   display: block;
@@ -62,14 +65,39 @@ a:active {
   height: 50px;
 }
 
+
 h1 {
   color: 15px;
 }
 
 #guidesHolder{
   margin: 20px 100px;
+  /* margin-top: 0; */
 }
 .guide{
-  background-color:red;
-  width: 100%;
+  background-color: rgba(0, 0, 50, 0.8);
+  padding: 1px 40px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 20px;
+  /* width: 100%; */
+}
+#createGuide{
+  background-color: lightgray;
+  font-weight:bold;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+#bodyWrapper{
+  display: flex;
+  position:relative;
+  margin-left: auto;
+  margin-right:auto;
+  background-color: rgba(60, 60, 60, 0.8);
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 80%;
+  height: 1400px;
 }

@@ -31,6 +31,9 @@ app.use("/", index);
 const profile = require("./routes/profile.routes");
 app.use("/", profile)
 
+const games = require("./routes/games.routes");
+app.use("/", games)
+
 const guides = require("./routes/guides.routes");
 app.use("/", guides)
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
