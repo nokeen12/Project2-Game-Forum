@@ -25,7 +25,7 @@ router.post('/games/add',(req,res,next)=>{
         genre,
         platforms,
         description
-    })
+    }).catch(err => console.log(err));
     res.redirect('/games')
     .catch(err => console.log(err));
 })
