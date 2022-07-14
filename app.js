@@ -24,6 +24,12 @@ const projectName = "Project2-Game-Forum";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 
+hbs.registerHelper('if_eq', function(a, b, opts) {
+    if(a == b)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
 app.use("/", index);

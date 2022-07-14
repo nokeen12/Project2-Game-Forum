@@ -49,4 +49,16 @@ router.post('/games/:titleLink/edit', (req,res,next)=>{
     Games.findOneAndUpdate({titleLink: req.params.titleLink}, req.body)
     .catch(err => console.log(err))
 })
+
+router.get('/games/:titleLink/delete', (req,res,next)=>{
+    Games.findOneAndDelete({titleLink: req.params.titleLink})
+        .then(game=>res.render('./games/edit', {game}))
+        .catch(err => console.log(err))
+})
+
+router.post('/games/:titleLink/delete', (req,res,next)=>{
+    Games.findOneAndDelete({titleLink: req.params.titleLink})
+    .then(() => res.redirect('/games'))
+    .catch(err => console.log(err))
+})
 module.exports = router;

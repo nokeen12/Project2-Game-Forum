@@ -21,11 +21,41 @@
   </form>
 </div>
 {{/if}}
-{{#if guide.comments}}
-    {{#each guide.comments}}
+{{#if comments}}
+    {{#each comments}}
         <p>Comment by: {{this.commenter}}</p>
         <p>{{this.comment}}</p>
+        {{#if_eq ../userInSession.username this.commenter}}
+        <form action="/guides/{{../guide.id}}/{{this.id}}/delete" method="DELETE">
+          <input type="submit" value="Delete Comment">
+        </form>
+
+        <button id="editButton" href="#editComment" onclick="document.querySelector('#{{this.id}}').style.display = 'block'">Edit Comment</button>
+        <form id="{{this.id}}" action="/guides/{{../guide.id}}/{{this.id}}/edit" method="PUT" style="display:none;">
+            <label> Comment
+              <input type="text" name="comment" style="height:100px;width:400px;" value="{{this.comment}}"/>
+            </label>
+            <button type="submit">Submit Comment</button>
+        </form>
+        {{!-- <button id="editButton" href="#editComment" onclick="document.getElementById('editButton').style.display = 'block'">Edit Comment</button>
+        <div id="editComment" style="display:none;">
+          <form action="/guides/{{../guide.id}}/{{this.id}}/edit" method="POST">
+            <label> Comment
+              <input type="text" name="comment" style="height:100px;width:400px;" value="{{this.comment}}"/>
+            </label>
+            <button type="submit">Submit Comment</button>
+          </form>
+        </div> --}}
+        {{else}}
+        <p>{{../userInSession.username}} is not the commenter: {{this.commenter}}</p>
+        {{/if_eq}}
+        {{!-- <form action="/guides/{{../guide.id}}/{{this.id}}/edit" method="GET">
+          <input type="submit" value="Edit Comment">
+        </form> --}}
     {{/each}}
     {{else}}
         <p>No comments found</p>
 {{/if}}
+
+
+

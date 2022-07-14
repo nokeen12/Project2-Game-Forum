@@ -5,7 +5,7 @@ const { Schema, model } = require("mongoose");
 const commentSchema = new Schema(
   {
     _id: ObjectId,
-    creator: {
+    commenter: {
       type: String,
       required: true,
     },
@@ -17,7 +17,8 @@ const commentSchema = new Schema(
         type: Number,
         required: true,
         default: 0
-    }
+    },
+    guide: ObjectId,
   },
   {
     //object adds extra properties: `createdAt` and `updatedAt`
@@ -25,4 +26,4 @@ const commentSchema = new Schema(
   }
 );
 
-module.exports = model("commentSchema", commentSchema);
+module.exports = model("comment", commentSchema);

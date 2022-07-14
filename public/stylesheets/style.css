@@ -66,9 +66,9 @@ a:active {
 }
 
 
-h1 {
+/* h1 {
   color: 15px;
-}
+} */
 
 #guidesHolder{
   display: flex;
@@ -102,7 +102,6 @@ h1 {
   margin-right:auto;
   background-color: rgba(60, 60, 60, 0.8);
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   width: 80%;
   height: 1400px;
@@ -113,4 +112,7 @@ h1 {
   padding: 20px 20px;
   border: none;
   border-radius: 20px;
+}
+#editButton:target{
+  display: block;
 }
