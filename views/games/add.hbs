@@ -1,0 +1,39 @@
+<p>Add Game Page</p>
+
+<div id="form">
+  <h2>Add Game</h2>
+  <form action="/games/add" method="POST">
+
+    <label> Title*
+      <input type="text" name="title" placeholder="Title" />
+    </label>
+
+    <label> Developers*
+      <input type="text" name="developers" placeholder="Developers"/>
+    </label>
+
+    <label> Publishers*
+      <input type="text" name="publishers" placeholder="Publishers"/>
+    </label>
+    <label> Composers
+      <input type="text" name="composers" placeholder="Composers"/>
+    </label>
+
+    <label> Genre*
+      <input type="text" name="genre" placeholder="Genre"/>
+    </label>
+
+    <label> Platforms
+      <input type="text" name="platforms" placeholder="Platforms"/>
+    </label>
+
+    <label> Description*
+      <input type="text" name="description" placeholder="Description"/>
+    </label>
+
+    <button type="submit">Add Game</button>
+    {{!-- {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+    {{/if}} --}}
+  </form>
+</div>

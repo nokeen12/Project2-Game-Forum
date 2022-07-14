@@ -1,0 +1,49 @@
+<div id="gameView">
+    <h1 id="title">{{game.title}}</h1>
+    <p id="developer">Developed by: {{game.developers}}!</p>
+    <p id="description">{{game.description}}</p>
+    <p id="publishers">{{game.publishers}}</p>
+    <p id="composers">{{game.composers}}</p>
+    <p id="genre">{{game.genre}}</p>
+    <p id="platforms">{{game.platforms}}</p>
+</div>
+
+<p>Edit Game Page</p>
+
+<div id="form">
+  <form action="/games/{{game.titleLink}}/edit" method="POST">
+
+    <label> Title
+      <input type="text" name="title" value="{{game.title}}" />
+    </label>
+
+    <label> Developers
+      <input type="text" name="developers" value="{{game.developers}}"/>
+    </label>
+    
+    <label> Description
+      <input type="text" name="description" value="{{game.description}}"/>
+    </label>
+    
+    <label> Publishers
+      <input type="text" name="publishers" value="{{game.publishers}}"/>
+    </label>
+    
+    <label> Composers
+      <input type="text" name="composers" value="{{game.composers}}"/>
+    </label>
+    
+    <label> Genre
+      <input type="text" name="genre" value="{{game.genre}}"/>
+    </label>
+    
+    <label> Platforms
+      <input type="text" name="platforms" value="{{game.platforms}}"/>
+    </label>
+     
+    <input type="submit" value="Sumbit Game Edit">
+    {{!-- {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+    {{/if}} --}}
+  </form>
+</div>

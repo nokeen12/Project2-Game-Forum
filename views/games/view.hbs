@@ -1,0 +1,29 @@
+{{#if game}}
+    <div id="gameView">
+        <h1 id="title">{{game.title}}</h1>
+        <p id="developer">Developed by: {{game.developers}}!</p>
+        <p id="description">{{game.description}}</p>
+        <p id="publishers">{{game.publishers}}</p>
+        <p id="composers">{{game.composers}}</p>
+        <p id="genre">{{game.genre}}</p>
+        <p id="platforms">{{game.platforms}}</p>
+        {{#if userInSession}}
+        <a href="/games/{{game.titleLink}}/edit" id="createGuide">Edit Game</a>
+        {{/if}}
+    </div>
+    <h1>Guides</h1>
+    <div id="guidesHolder">
+        {{#each guide}}
+            <div class="guide"><a href="/guides/{{id}}">
+                <h1 id="title">{{title}} </h1>
+                <p id="creator">Created by: {{ creator }}!</p>
+                <p id="body">{{body}}</p>
+                </a>
+            </div>
+            {{else}}
+                <p>Guide couldn't load</p>
+        {{/each}}
+    </div>
+    {{else}}
+        <p>Game couldn't load</p>
+{{/if}}

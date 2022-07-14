@@ -1,6 +1,7 @@
 const router = require("express").Router();
 // const axios = require("axios");
 const Guides = require('../models/Guide.model.js');
+const Comments = require('../models/Comment.model.js');
 const ApiService = require('../services/api.service');
 const apiService = new ApiService();
 
@@ -31,18 +32,32 @@ router.post('/guides/create', (req,res,next)=>{
 
 router.get('/guides/:id', (req,res,next)=>{
     Guides.findById(req.params.id)
-        .then(guide =>{ res.render('./guides/view', {guide})})
-//     axios
-//     .get(`https://ih-crud-api.herokuapp.com/characters/${req.params.id}`)
-//     .then(responseFromAPI => {
-//         res.render("characters/details-character", { character: responseFromAPI.data });
-//     })
-// .catch(err => console.error(err))
+        .then(guide =>{ res.render('./guides/view', {guide, userInSession: req.session.currentUser})})
 })
 router.get('/guides/:id/edit', (req,res,next)=>{
     Guides.findById(req.params.id)
         .then(guide =>{res.render('./guides/edit', {guide})})
 })
+
+router.post('/guides/:id/comment', (req,res,next)=>{
+    var newComment = {
+        comment: req.body.comment,
+        commenter: req.session.currentUser.username
+    };
+    Guides.findById(req.params.id)
+        .then(thisGuide=>{
+            thisGuide.comments.push(newComment)
+            thisGuide.save()
+            res.redirect(`/guides/${thisGuide.id}`)})
+        .catch(err=>console.log(err))
+})
+// router.get('/guides/:id/comment/delete', (req,res,next)=>{
+//     Guides.findById(req.params.id)
+//         .then(thisGuide=>{
+//             thisGuide.delete()
+//             res.redirect(`/guides/${thisGuide.id}`)})
+//         .catch(err=>console.log(err))
+// })
 // router.get('/guides/:id/delete', (req,res,next)=>{
 //     Guides.findById(req.params.id)
 //         .then(guide =>{res.render('./guid', {guide})})

@@ -5,3 +5,27 @@
 
 <p> Body: {{ guide.body }} </p>
 <a href="/guides/{{guide.id}}/edit">Edit Guide</a>
+
+<p>Comments</p>
+{{#if userInSession}}
+<div id="form">
+  <h2>Create Comment</h2>
+  <form action="/guides/{{guide.id}}/comment" method="POST">
+    <label> Comment
+      <input type="text" name="comment" style="height:200px;width:400px;"/>
+    </label>
+    <button type="submit">Post Comment</button>
+    {{!-- {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+    {{/if}} --}}
+  </form>
+</div>
+{{/if}}
+{{#if guide.comments}}
+    {{#each guide.comments}}
+        <p>Comment by: {{this.commenter}}</p>
+        <p>{{this.comment}}</p>
+    {{/each}}
+    {{else}}
+        <p>No comments found</p>
+{{/if}}

@@ -1,0 +1,15 @@
+<h1>Games Page</h1>
+<a href="/games/add" id="createGuide">Add Game</a>
+
+<div id="guidesHolder">
+        {{#each game}}
+            <div class="guide"><a href="/games/{{titleLink}}">
+                <h1 id="title">{{title}}</h1>
+                <p id="developer">Developed by: {{developers}}!</p>
+                <p id="genre">{{genre}}</p>
+                </a>
+            </div>
+            {{else}}
+                <p>Game couldn't load</p>
+        {{/each}}
+</div>

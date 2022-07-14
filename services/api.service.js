@@ -11,6 +11,9 @@ class ApiService {
   getGuide = (guideId) => {
     return this.api.get(`/guides/${guideId}`)
   }
+  editGame = (gameTitle, gameInfo) => {
+    return this.api.put(`/games/${gameTitle}`, gameInfo);
+  }
 //   signUp = () => {
 //     return this.api.get('/signup');
 //   };
