@@ -1,3 +1,4 @@
+<div id="form">
 <h2>Guide: {{ guide.title }}</h2>
 
 
@@ -5,8 +6,8 @@
 
 <p> Body: {{ guide.body }} </p>
 <a href="/guides/{{guide.id}}/edit">Edit Guide</a>
-
-<p>Comments</p>
+</div>
+<h2>Comments</h2>
 {{#if userInSession}}
 <div id="form">
   <h2>Create Comment</h2>
