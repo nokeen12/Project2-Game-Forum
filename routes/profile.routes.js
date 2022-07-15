@@ -5,7 +5,7 @@ const User = require('../models/User.model.js');
 
 
 router.get('/signup', (req,res,next)=>{
-    res.render("./profile/signup").catch(err=>console.log(err))
+    res.render("./profile/signup")
 })
 
 router.post('/signup', (req,res,next) =>{
@@ -21,11 +21,11 @@ router.post('/signup', (req,res,next) =>{
             });
         })
         .then(() => res.redirect('/login'))
-        .catch(err => next(err));
+        .catch(err => next(err))
 })
 
 router.get('/login', (req,res,next)=>{
-    res.render('./profile/login', {userInSession: req.session.currentUser})
+    res.render('./profile/login')
 })
 
 router.post('/login', (req,res,next)=>{
