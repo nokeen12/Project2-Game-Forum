@@ -5,7 +5,7 @@ const User = require('../models/User.model.js');
 
 
 router.get('/signup', (req,res,next)=>{
-    res.render("./profile/signup")
+    res.render("./profile/signup").catch(err=>console.log(err))
 })
 
 router.post('/signup', (req,res,next) =>{
@@ -25,11 +25,10 @@ router.post('/signup', (req,res,next) =>{
 })
 
 router.get('/login', (req,res,next)=>{
-    res.render('./profile/login', {userInSession: req.session.currentUser});
+    res.render('./profile/login', {userInSession: req.session.currentUser})
 })
 
 router.post('/login', (req,res,next)=>{
-    console.log('SESSION =====> ', req.session);
     const { username, password} = req.body;
     if(username === '' || password === ''){
         res.render('./profile/login', {
@@ -57,6 +56,7 @@ router.get('/profile', (req,res,next)=>{
     if(!req.session.currentUser){
         res.redirect('/login')
     }else{
+        console.log(req.session.currentUser.isAdmin)
         res.render('./profile/profile', {userInSession: req.session.currentUser})
     }
 })
@@ -65,6 +65,6 @@ router.post('/logout',(req,res,next)=>{
     req.session.destroy(err =>{
         if (err) next(err);
         res.redirect('/');
-    });
+    }).catch(err=>console.log(err))
 });
 module.exports = router;

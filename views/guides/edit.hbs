@@ -1,1 +1,26 @@
 <p>Edit Page</p>
+<div id="gameView">
+    <h1 id="title">{{guide.title}}</h1>
+    <p id="creator">Created by: {{guide.creator}}!</p>
+    <p id="body">{{guide.body}}</p>
+</div>
+
+<p>Edit Game Page</p>
+
+<div id="form">
+  <form action="/guides/{{guide.id}}/edit" method="POST">
+
+    <label> Title
+      <input type="text" name="title" value="{{guide.title}}" />
+    </label>
+
+    <label> Body
+      <input type="text" name="body" value="{{guide.body}}"/>
+    </label>
+
+    <input type="submit" value="Sumbit Guide Edit">
+  </form>
+</div>
+  <form action="/guides/{{guide.id}}/delete" method="DELETE">
+    <input type="submit" value="Delete">
+  </form>

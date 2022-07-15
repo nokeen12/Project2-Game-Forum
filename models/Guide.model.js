@@ -16,15 +16,15 @@ const guideSchema = new Schema(
       type: String,
       required: [true, 'Content is required.']
     },
-    rating: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     gameTitle: {
       type: String,
       required: [true, 'Game is required']
     },
+    rating: {
+      type: Number,
+      required: true,
+      default: 0
+  },
     comments: {
       type: Array
     }

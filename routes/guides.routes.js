@@ -14,20 +14,20 @@ router.get('/create', (req,res,next)=>{
     if(!req.session.currentUser){
         res.render('./profile/login', {errorMessage: 'Must be signed in to create a Post'})
     }else{
-        res.render('./guides/create').catch(err=>console.log(err));
+        res.render('./guides/create')
     }
 })
 
 //create guide
 router.post('/guides/create', (req,res,next)=>{
-    const {title, body} = req.body;
-    var newGuide = Guides.create({
+    const {title, body, game} = req.body;
+    Guides.create({
         creator: req.session.currentUser.username,
         title,
-        body
-    });
+        body,
+        gameTitle: game
+    })
     res.redirect('/guides')
-    .catch(err=>console.log(err));
 })
 
 //view guide
@@ -44,6 +44,23 @@ router.get('/guides/:id/edit', (req,res,next)=>{
     Guides.findById(req.params.id)
         .then(guide =>{res.render('./guides/edit', {guide})})
         .catch(err=>console.log(err))
+})
+router.post('/guides/:id/edit', (req,res,next)=>{
+    Guides.findByIdAndUpdate(req.params.id, req.body)
+    .then(()=>res.redirect(`/guides/${req.params.id}`))
+    .catch(err => console.log(err))
+})
+
+//post delete
+router.get('/guides/:id/delete', (req,res,next)=>{
+    Guides.findByIdAndDelete(req.params.id)
+    .then(()=>res.redirect(`/guides`))
+    .catch(err => console.log(err))
+})
+router.post('/guides/:id/delete', (req,res,next)=>{
+    Guides.findByIdAndDelete(req.params.id)
+    .then(()=>res.redirect(`/guides`))
+    .catch(err => console.log(err))
 })
 
 //post comment

@@ -11,12 +11,15 @@ router.get('/games', (req,res,next)=>{
         .catch(err => console.log(err))
 })
 router.get('/games/add', (req,res,next)=>{
-    res.render('./games/add')
-    .catch(err => console.log(err))
+    if(!req.session.currentUser || !req.session.currentUser.isAdmin){
+        res.render('./profile/login', {errorMessage: 'Must be signed in to add a Game'})
+    }else{
+        res.render('./games/add')
+    }
 })
 router.post('/games/add',(req,res,next)=>{
     const {title, developers, publishers, composers, genre, platforms, description} = req.body;
-    var newGame = Games.create({
+    Games.create({
         title,
         titleLink: title.split(' ').join(''),
         developers,
@@ -25,9 +28,8 @@ router.post('/games/add',(req,res,next)=>{
         genre,
         platforms,
         description
-    }).catch(err => console.log(err));
+    }).catch(err => console.log(err))
     res.redirect('/games')
-    .catch(err => console.log(err));
 })
 
 router.get('/games/:titleLink',(req,res,next)=>{
@@ -47,6 +49,7 @@ router.get('/games/:titleLink/edit', (req,res,next)=>{
 
 router.post('/games/:titleLink/edit', (req,res,next)=>{
     Games.findOneAndUpdate({titleLink: req.params.titleLink}, req.body)
+    .then(()=>res.redirect(`/games/${req.params.titleLink}`))
     .catch(err => console.log(err))
 })
 

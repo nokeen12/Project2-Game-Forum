@@ -7,8 +7,9 @@
         <p id="composers">{{game.composers}}</p>
         <p id="genre">{{game.genre}}</p>
         <p id="platforms">{{game.platforms}}</p>
-        {{#if userInSession}}
+        {{#if userInSession.isAdmin}}
         <a href="/games/{{game.titleLink}}/edit" id="createGuide">Edit Game</a>
+        <form action="/games/{{game.titleLink}}/delete" method="DELETE" id="createGuide"><input type="submit" value="Delete"></form>
         {{/if}}
     </div>
     <h1>Guides</h1>
@@ -16,14 +17,11 @@
         {{#each guide}}
             <div class="guide"><a href="/guides/{{id}}">
                 <h1 id="title">{{title}} </h1>
-                <p id="creator">Created by: {{ creator }}!</p>
-                <p id="body">{{body}}</p>
-                </a>
             </div>
             {{else}}
-                <p>Guide couldn't load</p>
+                <p>No guides found</p>
         {{/each}}
     </div>
     {{else}}
-        <p>Game couldn't load</p>
+        <p>Game not found</p>
 {{/if}}
