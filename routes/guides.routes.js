@@ -35,7 +35,9 @@ router.get('/guides/:id', (req,res,next)=>{
     Comments.find({guide: req.params.id})
     .then(commentsFound => {
         Guides.findById(req.params.id)
-        .then(guide =>{ res.render('./guides/view', {guide, userInSession: req.session.currentUser, comments: commentsFound})})
+        .then(guide =>{
+            res.render('./guides/view', {guide, userInSession: req.session.currentUser, comments: commentsFound})
+        })
     }).catch(err=>console.log(err))
 })
 

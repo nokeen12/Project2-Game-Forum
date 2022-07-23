@@ -3,10 +3,10 @@
         <h1 id="title">{{game.title}}</h1>
         <p id="developer">Developed by: {{game.developers}}!</p>
         <p id="description">{{game.description}}</p>
-        <p id="publishers">{{game.publishers}}</p>
-        <p id="composers">{{game.composers}}</p>
-        <p id="genre">{{game.genre}}</p>
-        <p id="platforms">{{game.platforms}}</p>
+        <p id="publishers">Publisher(s): {{game.publishers}}</p>
+        <p id="composers">Composer(s): {{game.composers}}</p>
+        <p id="genre">Genre(s): {{game.genre}}</p>
+        <p id="platforms">Platform(s): {{game.platforms}}</p>
         {{#if userInSession.isAdmin}}
         <a href="/games/{{game.titleLink}}/edit" id="createGuide">Edit Game</a>
         <form action="/games/{{game.titleLink}}/delete" method="DELETE" id="createGuide"><input type="submit" value="Delete"></form>
