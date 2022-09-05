@@ -23,14 +23,26 @@ body {
   height: 100%;
 }
 
+#home-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(60, 60, 60, 0.8);
+  box-shadow: 0 0 30px black;
+  border-radius: 25px;
+  padding: 50px;
+}
+#home-text > *{
+  margin: 0;
+}
 /* nav bar */
 #wholeNav{
   z-index: 1;
   display: flex;
   position: sticky;
-  margin: 400px auto 0px auto;
+  margin: 200px auto 0px auto;
   top:0;
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .8);
   width: 80%;
   justify-content: center;
 }
@@ -45,6 +57,7 @@ body {
 }
 #wholeNav ul li a {
   font-size: 20px;
+  font-weight: 700;
   color: darkmagenta;
 }
 #wholeNav ul li a:link {
@@ -66,6 +79,9 @@ body {
   height: 50px;
 }
 
+.accountLink{
+  color:red;
+}
 
 h1 {
   font-size: 3rem;
@@ -79,13 +95,18 @@ h1 {
   width: 80%;
 }
 .guide{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow:hidden;
   background-color: rgba(0, 0, 50, 0.8);
   margin-bottom: 20px;
   border: none;
   border-radius: 20px;
   width: 80%;
-  height: 115px;
+  height:fit-content;
+  min-height: 115px;
   box-shadow: 0px 10px 20px black;
 }
 .guide:hover{
@@ -123,7 +144,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   width: 80%;
-  height: 1400px;
+  min-height: 600px;
+  margin-bottom: 200px;
 }
 #gameView{
   background-color: rgba(0,0,0, .1);
@@ -135,4 +157,29 @@ h1 {
 }
 #editButton:target{
   display: block;
+}
+.comment{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0,0,0, .1);
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+@media (max-width: 950px){
+  #wholeNav{
+    width: 100%;
+  }
+  #bodyWrapper{
+    width: 100%;
+  }
+  #guidesHolder{
+    width: 100%;
+    margin: 20px 0;
+  }
+  .guide{
+    width: 98%;
+  }
 }

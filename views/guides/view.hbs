@@ -1,10 +1,10 @@
 <div id="gameView">
-<h2>Guide: {{ guide.title }}</h2>
+<h2>{{ guide.title }}</h2>
 
 
-<h3> Creator: {{ guide.creator }} </h3>
+<h3>Created by: {{ guide.creator }} </h3>
 
-<p> Body: {{ guide.body }} </p>
+<p>{{ guide.body }}</p>
 {{#if_eq userInSession.username guide.creator}}
 <a href="/guides/{{guide.id}}/edit">Edit Guide</a>
 {{/if_eq}}
@@ -23,8 +23,10 @@
 {{/if}}
 {{#if comments}}
     {{#each comments}}
+      <div class="comment">
         <p>Comment by: {{this.commenter}}</p>
         <p>{{this.comment}}</p>
+
         {{#if_eq ../userInSession.username this.commenter}}
         <form action="/guides/{{../guide.id}}/{{this.id}}/delete" method="DELETE">
           <input type="submit" value="Delete Comment">
@@ -36,6 +38,7 @@
           <button type="submit">Edit Comment</button>
         </form>
         {{/if_eq}}
+      </div>
     {{/each}}
     {{else}}
         <p>No comments found</p>
